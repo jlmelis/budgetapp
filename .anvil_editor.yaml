@@ -3,7 +3,8 @@ unique_ids:
     Form1: FJTBBDCRHCAVC2WMCVPMAXJ7DIDV44RG
     Form2: '1704212416372588925541820.105'
   modules: {}
-  server_modules: {}
+  server_modules:
+    Supabase: '1704214291050627082809982.4386'
   assets:
     standard-page.html: DMU4MSVW4VU2E2RSVWQTHUHC4ZWCW7SA
     theme.css: D5KFCYOQTOV4PFQ4WBMJX3UYEDX5J5XJ
