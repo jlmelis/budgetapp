@@ -20,6 +20,6 @@ import anvil.server
 #
 
 @anvil.server.callable
-def getBckets():
-  item_list = [("Groceries", "123")]
+def getBuckets():
+  item_list = [("Groceries", "123"), ("Vehicle", "1")]
   return item_list
