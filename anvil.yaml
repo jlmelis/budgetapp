@@ -4,9 +4,12 @@ services:
   client_config: {}
   server_config: {}
 - source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: false, enable_automatically: true, use_email: true,
-    confirm_email: true}
+  client_config: {allow_signup: false, enable_automatically: false, use_email: false,
+    confirm_email: false, use_google: true}
   server_config: {user_table: users}
+- source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {enc_delegation_refresh_token: 1JcqkY234Tby9MOe53UU61bOzeAQNkEEl5xUY7tfAk3HgPYGyUZOJ/48P1d6TsyIJ3SYEGnL2EkfYOxhtUjmuUn9FouaCktV5S/ZCByRUkk9AxXKzJL8YO1dzO/fDuVanYoF34SvzLXzDVcu9+vfG1gLKNSroZugo2zzpRlZiRnknwk7KkdFmKzjkuXxUSbh7mWYfh2fLixJKr7sxyelQuXJ1Glq1w0tJBZ0arxOptCbs0W+VBqjz9ACLC2OYTvc8V9rA0M02mXupkosPizGfI7ZsZE/xSx3atgNUCSf+UB1zgI5sn56Xi7GshnKXg==}
 package_name: BudgetApp
 allow_embedding: false
 name: BudgetApp
