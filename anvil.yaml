@@ -10,6 +10,9 @@ services:
 - source: /runtime/services/google.yml
   client_config: {}
   server_config: {enc_delegation_refresh_token: 1JcqkY234Tby9MOe53UU61bOzeAQNkEEl5xUY7tfAk3HgPYGyUZOJ/48P1d6TsyIJ3SYEGnL2EkfYOxhtUjmuUn9FouaCktV5S/ZCByRUkk9AxXKzJL8YO1dzO/fDuVanYoF34SvzLXzDVcu9+vfG1gLKNSroZugo2zzpRlZiRnknwk7KkdFmKzjkuXxUSbh7mWYfh2fLixJKr7sxyelQuXJ1Glq1w0tJBZ0arxOptCbs0W+VBqjz9ACLC2OYTvc8V9rA0M02mXupkosPizGfI7ZsZE/xSx3atgNUCSf+UB1zgI5sn56Xi7GshnKXg==}
+- source: /runtime/services/anvil/secrets.yml
+  client_config: {}
+  server_config: {}
 package_name: BudgetApp
 allow_embedding: false
 name: BudgetApp
@@ -41,4 +44,8 @@ db_schema:
       admin_ui: {order: 5, width: 200}
       type: bool
     title: Users
+secrets:
+  supabase_key:
+    value: {SHYMWDJFGGTP45AC: EyVpTl/ngvfe19s6cRASLQ9bd7Z2vOG4hAyNt19ehs49emzjG9YfxuC5qFdG5a8E18CdMKPRgpff2MbNTT44YEoFbsS4GK2QVh9Coqgkb5Vk1po7kIjZLubz7ukkmT87HQczCovG6T0YPdo/PvN9ix/w4J15/n9k+FjrxUpFvC1KSABgouYVURdrhVojkjFL4iigHo/kZFQc3kPuRTsRj5lNaNsQrvB4xHnbiE7Yme058SVPGi2DInURsxcoKozyRoFW2tVkE6lzXXMwZrFdOAqXl3QO1bPQz+FqjcpjQ76LXfINyW8qBkRaVNAFTW6E2v6Q9mb4ZLv5Se1IAw6NJIZ3za6Tk7Mi1fHj6mDUAJM+ISvY6T/qRgfKBOHq5VG0sGL2occrlb9s1R3d8HIg}
+    type: secret
 renamed: true

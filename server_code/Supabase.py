@@ -1,3 +1,4 @@
+import anvil.secrets
 import anvil.google.auth, anvil.google.drive, anvil.google.mail
 from anvil.google.drive import app_files
 import anvil.users
@@ -21,5 +22,10 @@ import anvil.server
 
 @anvil.server.callable
 def getBuckets():
-  item_list = [("Groceries", "123"), ("Vehicle", "1")]
-  return item_list
+  response = anvil.http.request("https://tjryiccnllfxwmyzpnrg.supabase.co/rest/v1/buckets?select=*", json=True, 
+                            headers = {
+                              "Authentication": anvil.secrets.get_secret('supabase_key'),
+                              "apikey": anvil.secrets.get_secret('supabase_key')
+                            })
+
+  return [(row["name"], row["id"]) for row in response]
