@@ -7,21 +7,9 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 
-# This is a server module. It runs on the Anvil server,
-# rather than in the user's browser.
-#
-# To allow anvil.server.call() to call functions here, we mark
-# them with @anvil.server.callable.
-# Here is an example - you can replace it with your own:
-#
-# @anvil.server.callable
-# def say_hello(name):
-#   print("Hello, " + name + "!")
-#   return 42
-#
 
 @anvil.server.callable
-def getBuckets():
+def get_buckets():
   response = anvil.http.request("https://tjryiccnllfxwmyzpnrg.supabase.co/rest/v1/buckets?select=*", json=True, 
                             headers = {
                               "Authentication": anvil.secrets.get_secret('supabase_key'),
@@ -29,3 +17,36 @@ def getBuckets():
                             })
 
   return [(row["name"], row["id"]) for row in response]
+
+@anvil.server.callable
+def get_payees():
+  response = anvil.http.request("https://tjryiccnllfxwmyzpnrg.supabase.co/rest/v1/payees?select=*", json=True, 
+                            headers = {
+                              "Authentication": anvil.secrets.get_secret('supabase_key'),
+                              "apikey": anvil.secrets.get_secret('supabase_key')
+                            })
+
+  return [(row["name"], row["id"]) for row in response]
+
+@anvil.server.callable
+def create_expense(bucket, payee, amount, date):
+  print(f"payee: {payee}")
+  try:
+    response = anvil.http.request("https://tjryiccnllfxwmyzpnrg.supabase.co/rest/v1/expenses",
+                            method = "POST",
+                            headers = {
+                              "Authentication": anvil.secrets.get_secret('supabase_key'),
+                              "apikey": anvil.secrets.get_secret('supabase_key')
+                            },
+                            data = {
+                              "bucket_id": bucket,
+                              "payee_id": payee,
+                              "amount": amount,
+                              "date": str(date)
+                            })
+    print(response)
+  except anvil.http.HttpError as e:
+    print(e)
+
+
+  

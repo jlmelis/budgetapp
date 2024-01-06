@@ -13,7 +13,7 @@ services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: ExpenseEntry}
+startup: {type: form, module: Home}
 package_name: BudgetApp
 allow_embedding: false
 name: BudgetApp
