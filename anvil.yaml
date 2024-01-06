@@ -13,13 +13,14 @@ services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
   server_config: {}
+startup: {type: form, module: ExpenseEntry}
 package_name: BudgetApp
 allow_embedding: false
 name: BudgetApp
 runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox,
   server_spec: null}
 metadata: {title: Budget Tracker}
-startup_form: Form1
+startup_form: null
 db_schema:
   users:
     client: none
