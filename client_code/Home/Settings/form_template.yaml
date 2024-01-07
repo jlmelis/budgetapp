@@ -1,7 +1,14 @@
 container: {type: ColumnPanel}
 components:
-- name: label_1
-  properties: {text: THis is a different page}
-  type: Label
-  layout_properties: {grid_position: 'AHWCSL,CRMGRC'}
+- name: data_grid_buckets
+  properties:
+    columns:
+    - {id: JKSDUP, title: Name, data_key: name}
+    - {id: VJQQOR, title: Target, data_key: target}
+  type: DataGrid
+  components:
+  - name: repeating_panel_buckets
+    properties: {item_template: Home.Settings.RowTemplate1}
+    type: RepeatingPanel
+  layout_properties: {grid_position: 'GEKNGX,BFLXUM'}
 is_package: true
