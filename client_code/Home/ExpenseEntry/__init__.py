@@ -10,13 +10,13 @@ from anvil.tables import app_tables
 import datetime
 
 class ExpenseEntry(ExpenseEntryTemplate):
+  print('Does this ever get called')
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
-    
-    self.drop_down_buckets.items = anvil.server.call('get_buckets')
-    self.drop_down_payees.items = anvil.server.call('get_payees')
+    self.drop_down_buckets.items = [(row["name"], row["id"]) for row in anvil.server.call('get_data', 'buckets')]
+    self.drop_down_payees.items = [(row["name"], row["id"]) for row in anvil.server.call('get_data', 'payees')]
     self.date_picker_date.date = datetime.date.today()
 
     
@@ -41,4 +41,4 @@ class ExpenseEntry(ExpenseEntryTemplate):
       anvil.server.call('create_expense', bucket, payee, amount, date)
       # reset fields
       self.clear_inputs()
-    pass
+    

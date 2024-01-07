@@ -1,0 +1,46 @@
+container: {type: ColumnPanel}
+components:
+- name: data_grid_payees
+  properties:
+    columns:
+    - {id: JKSDUP, title: Name, data_key: name, width: ''}
+    - {id: WZLVGW, data_key: '', title: '', width: 30.2076416015625, expand: false}
+    rows_per_page: 21
+    auto_header: false
+  type: DataGrid
+  layout_properties: {grid_position: 'LWOEJL,WRNFVH'}
+  components:
+  - name: data_row_panel_1
+    properties: {background: 'theme:Secondary Container'}
+    type: DataRowPanel
+    layout_properties: {}
+    components:
+    - name: button_refresh
+      properties: {text: '', icon_align: left_edge, icon: 'fa:refresh', foreground: 'theme:On
+          Secondary Container'}
+      type: Button
+      layout_properties: {column: WZLVGW}
+      event_bindings: {click: button_refresh_click}
+    - name: label_name
+      properties: {text: Name, bold: true, background: '', foreground: 'theme:On Secondary
+          Container'}
+      type: Label
+      layout_properties: {column: JKSDUP}
+  - name: data_row_panel_add
+    properties: {}
+    type: DataRowPanel
+    layout_properties: {pinned: true}
+    components:
+    - name: text_box_payee_name
+      properties: {}
+      type: TextBox
+      layout_properties: {column: JKSDUP}
+    - name: button_add_bucket
+      properties: {text: '', icon: 'fa:plus', align: center, border: '1', icon_align: left_edge}
+      type: Button
+      layout_properties: {column: WZLVGW}
+      event_bindings: {click: button_add_payee_click}
+  - name: repeating_panel_buckets
+    properties: {item_template: Home.Buckets.RowTemplate1}
+    type: RepeatingPanel
+is_package: true

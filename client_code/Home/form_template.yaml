@@ -21,9 +21,14 @@ components:
     properties: {text: Expense Entry}
     type: Link
     layout_properties: {grid_position: 'NJANCC,JYOOWN'}
-    event_bindings: {click: link_expense_entry_click}
-  - name: link_settings
-    properties: {text: Settings}
+    event_bindings: {click: nav_link_click}
+  - name: link_buckets
+    properties: {text: Buckets}
     type: Link
     layout_properties: {grid_position: 'QVEPKP,ALREOV'}
+    event_bindings: {click: nav_link_click}
+  - name: link_payees
+    properties: {text: Payees}
+    type: Link
+    layout_properties: {grid_position: 'GDGWCV,EEQLST'}
     event_bindings: {click: nav_link_click}

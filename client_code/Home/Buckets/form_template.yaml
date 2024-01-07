@@ -1,0 +1,56 @@
+container: {type: ColumnPanel}
+components:
+- name: data_grid_buckets
+  properties:
+    columns:
+    - {id: JKSDUP, title: Name, data_key: name, width: ''}
+    - {id: VJQQOR, title: Target, data_key: target, width: '', expand: false}
+    - {id: WZLVGW, data_key: '', title: '', width: 30.2076416015625, expand: false}
+    rows_per_page: 21
+    auto_header: false
+  type: DataGrid
+  components:
+  - name: data_row_panel_1
+    properties: {background: 'theme:Secondary Container'}
+    type: DataRowPanel
+    components:
+    - name: button_refresh
+      properties: {text: '', icon_align: left_edge, icon: 'fa:refresh', foreground: 'theme:On
+          Secondary Container'}
+      type: Button
+      layout_properties: {column: WZLVGW}
+      event_bindings: {click: button_refresh_click}
+    - name: label_name
+      properties: {text: Name, bold: true, background: '', foreground: 'theme:On Secondary
+          Container'}
+      type: Label
+      layout_properties: {column: JKSDUP}
+    - name: label_target
+      properties: {text: Target, bold: true, background: '', foreground: 'theme:On
+          Secondary Container'}
+      type: Label
+      layout_properties: {column: VJQQOR}
+    layout_properties: {}
+  - name: data_row_panel_add
+    properties: {}
+    type: DataRowPanel
+    layout_properties: {pinned: true}
+    components:
+    - name: text_box_bucket_name
+      properties: {}
+      type: TextBox
+      layout_properties: {column: JKSDUP}
+    - name: text_box_target
+      properties: {type: number}
+      type: TextBox
+      layout_properties: {column: VJQQOR}
+    - name: button_add_bucket
+      properties: {text: '', icon: 'fa:plus', align: center, border: '1', icon_align: left_edge}
+      type: Button
+      layout_properties: {column: WZLVGW}
+      event_bindings: {click: button_add_bucket_click}
+  - name: repeating_panel_buckets
+    properties: {item_template: Home.Buckets.RowTemplate1}
+    type: RepeatingPanel
+  layout_properties: {grid_position: 'GEKNGX,BFLXUM'}
+is_package: true

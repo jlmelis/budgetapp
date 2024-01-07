@@ -25,20 +25,13 @@ def call_Api(endpoint, data = None, method = "GET"):
       print(f"error = {e} status = {e.status}")
 
 @anvil.server.callable
-def get_buckets():
-  if anvil.server.session.get('buckets') is None:
-    response = call_Api("buckets?select=*")
-    anvil.server.session['buckets'] = [(row["name"], row["id"]) for row in response]
+def get_data(type):
+  if anvil.server.session.get(type) is None:
+    response = call_Api(f"{type}?select=*")
+    anvil.server.session[type] = response
 
-  return anvil.server.session.get('buckets')
+  return anvil.server.session.get(type)
 
-@anvil.server.callable
-def get_payees():
-  if anvil.server.session.get('payees') is None:
-    response = call_Api("payees?select=*")
-    anvil.server.session['payees'] = [(row["name"], row["id"]) for row in response]
-
-  return anvil.server.session['payees']
 
 @anvil.server.callable
 def create_expense(bucket, payee, amount, date):
@@ -48,5 +41,30 @@ def create_expense(bucket, payee, amount, date):
             "amount": amount,
             "date": str(date)
           }
-  response = call_Api("expenses", data, "POST")
+  response = call_Api('expenses', data, 'POST')
+
+@anvil.server.callable
+def create_bucket(name, target):
+  data = {
+            "name": name,
+            "target": target
+          }
+  response = call_Api('buckets', data, 'POST')
+  # after an add we need to refresh the list of buckets
+  refresh_data('buckets')
+  
+@anvil.server.callable
+def create_payee(name):
+  data = {
+            "name": name
+          }
+  response = call_Api('payees', data, 'POST')
+  # after an add we need to refresh the list of buckets
+  refresh_data('payees')
+
+@anvil.server.callable
+def refresh_data(type):
+  anvil.server.session[type] = None
+  get_data(type)
+
  
