@@ -14,22 +14,31 @@ class ExpenseEntry(ExpenseEntryTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
+    
     self.drop_down_buckets.items = anvil.server.call('get_buckets')
     self.drop_down_payees.items = anvil.server.call('get_payees')
     self.date_picker_date.date = datetime.date.today()
+
+    
 
   def clear_inputs(self):
     self.drop_down_buckets.selected_value = None
     self.drop_down_payees.selected_value = None
     self.text_box_amount.text = ""
     self.date_picker_date.date = datetime.date.today()
+    self.label_error.text = ""
+    self.label_error.visible = False
     
   def button_submit_click(self, **event_args):
     bucket = self.drop_down_buckets.selected_value
     payee = self.drop_down_payees.selected_value
     amount = self.text_box_amount.text
     date = self.date_picker_date.date
-    anvil.server.call('create_expense', bucket, payee, amount, date)
-    # reset fields
-    self.clear_inputs()
+    if bucket is None or payee is None or not amount:
+      self.label_error.text = "*Please fill out all fields"
+      self.label_error.visible = True
+    else:
+      anvil.server.call('create_expense', bucket, payee, amount, date)
+      # reset fields
+      self.clear_inputs()
     pass
