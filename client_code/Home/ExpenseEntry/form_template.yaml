@@ -1,4 +1,6 @@
-container: {type: ColumnPanel}
+container:
+  type: ColumnPanel
+  event_bindings: {show: form_show}
 components:
 - name: column_panel_1
   properties: {}
@@ -42,3 +44,4 @@ components:
       type: Label
       layout_properties: {grid_position: 'HAWJVM,RJVWXD'}
 is_package: true
+data_bindings: []

@@ -31,4 +31,6 @@ class Buckets(BucketsTemplate):
     """This method is called when the button is clicked"""
     anvil.server.call('refresh_data', 'buckets')
     self.repeating_panel_buckets.items = anvil.server.call('get_data', 'buckets')
+
+
     
